@@ -116,11 +116,6 @@ shippr/
 4. Push it (`git push origin feature/something-cool`)
 5. Open a PR
 
-## License
-
-MIT License—check the LICENSE file for details.
-
-
 ## Support
 
 If you encounter any issues or have questions:
