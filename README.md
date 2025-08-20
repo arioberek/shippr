@@ -97,12 +97,14 @@ shippr is a thin wrapper around the GitHub CLI (`gh`) that provides:
 ## 📁 Project Structure
 
 shippr/
-├── cmd/git-shippr/
-│   └── main.go          # Main application entry point & Bubble Tea TUI
-├── internal/gh/
-│   └── gh.go           # GitHub CLI wrapper functions
-├── package.json        # npm package configuration
-└── README.md
+├─ cmd/
+│  └─ git-shippr/
+│     └─ main.go          # Main application entry point & Bubble Tea TUI
+├─ internal/
+│  └─ gh/
+│     └─ gh.go            # GitHub CLI wrapper functions
+├─ package.json           # npm package configuration
+└─ README.md
 
 
 ## 🤝 Contributing
