@@ -1,0 +1,46 @@
+{
+  "name": "@arioberek/shippr",
+  "version": "0.1.1",
+  "description": "GitHub PR shipper TUI/CLI (Go) with npm installer shim",
+  "private": false,
+  "bin": {
+    "shippr": "bin/shippr.js"
+  },
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "bin/",
+    "scripts/",
+    "cmd/",
+    "internal/",
+    "go.mod",
+    "go.sum",
+    "README.md",
+    "LICENSE",
+    "mise.toml"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arioberek/git-shippr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arioberek/git-shippr/issues"
+  },
+  "homepage": "https://github.com/arioberek/git-shippr#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "github",
+    "cli",
+    "pr",
+    "merge",
+    "tui"
+  ],
+  "author": "",
+  "license": "MIT"
+}
