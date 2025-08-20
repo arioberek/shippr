@@ -96,6 +96,7 @@ shippr is a thin wrapper around the GitHub CLI (`gh`) that provides:
 
 ## 📁 Project Structure
 
+```text
 shippr/
 ├─ cmd/
 │  └─ git-shippr/
@@ -105,6 +106,7 @@ shippr/
 │     └─ gh.go            # GitHub CLI wrapper functions
 ├─ package.json           # npm package configuration
 └─ README.md
+```
 
 
 ## 🤝 Contributing
