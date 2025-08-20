@@ -274,7 +274,7 @@ func main() {
 		fs.StringVar(&org, "org", "", "GitHub organization")
 		_ = fs.Parse(os.Args[2:])
 		if org == "" {
-			fmt.Println("Usage: git-shippr list --org <org>")
+			fmt.Println("Usage: shippr list --org <org>")
 			os.Exit(1)
 		}
 		if err := runList(org); err != nil {
@@ -296,7 +296,7 @@ func main() {
 	} else if flag.NArg() == 1 {
 		repoSlug = flag.Arg(0)
 	} else {
-		fmt.Println("Usage: git-shippr list --org <org> | git-shippr --org <org> --repo <repo> | git-shippr <org/repo>")
+		fmt.Println("Usage: shippr list --org <org> | shippr --org <org> --repo <repo> | shippr <org/repo>")
 		os.Exit(1)
 	}
 

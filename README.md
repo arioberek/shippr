@@ -1,6 +1,22 @@
-# git-shippr
+# shippr
 
-Interactive Bubble Tea CLI to quickly find and merge GitHub PRs.
+Interactive CLI to quickly find and merge GitHub PRs.
+
+## Logo
+
+```ansi
+\x1b[95m
+   _____ _     _       
+  / ____| |   (_)      
+ | (___ | |__  _ _ __  
+  \___ \| '_ \| | '_ \ 
+  ____) | | | | | |_) |
+ |_____/|_| |_|_| .__/ 
+                 | |    
+                 |_|    
+   S  H  I  P  P  R
+\x1b[0m
+```
 
 - Lists open PRs for a repo with search/filter.
 - Optional: open selected PR in the browser.
@@ -31,18 +47,18 @@ Option B: build from source
 
 ```bash
 # after renaming folder below, or build with -o
-go build -o git-shippr ./cmd/git-shippr
+go build -o shippr ./cmd/git-shippr
 ```
-This produces a `git-shippr` binary.
+This produces a `shippr` binary.
 
 ## Usage
 
 ```bash
 # using flags
-./git-shippr --org <org> --repo <repo>
+shippr --org <org> --repo <repo>
 
 # list open PRs across an organization
-./git-shippr list --org <org>
+shippr list --org <org>
 
 # installed via npm (global)
 shippr --org <org> --repo <repo>
@@ -52,7 +68,7 @@ shippr list --org <org>
 shippr --no-alt --org <org> --repo <repo>
 
 # or a single slug argument
-./git-shippr <org/repo>
+shippr <org/repo>
 ```
 
 Keyboard:
