@@ -27,10 +27,10 @@ Interactive CLI for finding and merging GitHub PRs quickly.
 
 ```bash
 # Install globally
-npm install -g @arioberek/shippr
+npm install -g @arielton/shippr
 
 # Or run directly
-npx @arioberek/shippr --help
+npx @arielton/shippr --help
 ```
 
 > **Note**: This builds the Go binary using a postinstall script. You'll need Go installed and in your PATH.
@@ -38,7 +38,7 @@ npx @arioberek/shippr --help
 ### Option B: Build from Source
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/arioberek/shippr
 cd shippr
 go build -o shippr ./cmd/git-shippr
 ```
