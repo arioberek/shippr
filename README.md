@@ -1,27 +1,27 @@
-# 🚢 shippr
+# shippr 🚢
 
-> Interactive CLI to quickly find and merge GitHub PRs with style
+Interactive CLI for finding and merging GitHub PRs quickly.
 
 <img width="1024" height="1024" alt="shippr" src="https://github.com/user-attachments/assets/88ae292a-b06f-41ce-9741-de991650ef1d" />
 
-## ✨ Features
+## Features
 
-- **Interactive PR Browser**: Beautiful TUI to list and filter open PRs
-- **Quick Actions**: View, merge, and manage PRs without leaving your terminal  
-- **Flexible Merge Options**: Choose between squash (default), rebase, or merge strategies
-- **Branch Cleanup**: Optionally delete branches after merging
-- **Organization Support**: List PRs across entire organizations
-- **Fast & Lightweight**: Built with Go and powered by GitHub CLI
+- Interactive TUI for listing and filtering open PRs
+- View, merge, and manage PRs right from your terminal
+- Merge options: squash (default), rebase, or merge commit
+- Option to delete branches after merging
+- Support for listing PRs across an entire organization
+- Lightweight Go app that wraps the GitHub CLI
 
-## 📋 Requirements
+## Requirements
 
-- **Go 1.21+** (for building from source)
-- **GitHub CLI (`gh`)** installed and authenticated
+- Go 1.21+ (if building from source)
+- GitHub CLI (`gh`) installed and authenticated:
   ```bash
   gh auth login
   ```
 
-## 🚀 Installation
+## Installation
 
 ### Option A: via npm (Recommended)
 
@@ -33,7 +33,7 @@ npm install -g @arioberek/shippr
 npx @arioberek/shippr --help
 ```
 
-> **Note**: This method uses a postinstall script to build the Go binary locally. Go must be installed and available in your PATH.
+> **Note**: This builds the Go binary using a postinstall script. You'll need Go installed and in your PATH.
 
 ### Option B: Build from Source
 
@@ -43,85 +43,85 @@ cd shippr
 go build -o shippr ./cmd/git-shippr
 ```
 
-This produces a `shippr` binary in your current directory.
+This creates a `shippr` binary in the current directory.
 
-## 🎯 Usage
+## Usage
 
 ### Basic Commands
 
 ```bash
-# Interactive PR browser for a specific repository
+# Browse PRs for a specific repo
 shippr --org <org> --repo <repo>
 
-# Or use the shorthand slug format
+# Shorthand slug format
 shippr <org/repo>
 
-# List all open PRs across an organization
+# List open PRs across an organization
 shippr list --org <org>
 
-# Disable alternate screen buffer (if your terminal clears on exit)
+# Disable alt screen (if your terminal clears on exit)
 shippr --no-alt --org <org> --repo <repo>
 ```
 
 ### Examples
 
 ```bash
-# Browse PRs for a specific repo
+# Browse PRs in microsoft/vscode
 shippr microsoft/vscode
 
-# List all PRs in your organization
+# List PRs in your org
 shippr list --org mycompany
 
-# Use with flags
+# With flags
 shippr --org facebook --repo react
 ```
 
-## ⌨️ Keyboard Shortcuts
+## Keyboard Shortcuts
 
 | Key | Action |
 |-----|--------|
-| `Enter` | Select PR / Confirm action |
-| `q` / `Esc` / `Ctrl+C` | Quit application |
-| `Type` | Filter/search PRs in real-time |
-| `↑` / `↓` | Navigate through PR list |
+| `Enter` | Select or confirm |
+| `q` / `Esc` / `Ctrl+C` | Quit |
+| Typing | Filter the list |
+| `↑` / `↓` | Navigate |
 
-## 🛠️ How It Works
+## How It Works
 
-shippr is a thin wrapper around the GitHub CLI (`gh`) that provides:
+shippr wraps the GitHub CLI (`gh`) to keep things simple:
 
-1. **PR Listing**: Uses `gh pr list` to fetch open PRs
-2. **PR Details**: Uses `gh pr view` for detailed information
-3. **Merging**: Uses `gh pr merge` with your chosen strategy
-4. **Branch Cleanup**: Uses `--delete-branch` flag when requested
+1. Lists PRs with `gh pr list`
+2. Shows details via `gh pr view`
+3. Merges using `gh pr merge` and your chosen method
+4. Deletes branches with the `--delete-branch` flag if you want
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 shippr/
 ├─ cmd/
 │  └─ git-shippr/
-│     └─ main.go          # Main application entry point & Bubble Tea TUI
+│     └─ main.go          # Main entry point with Bubble Tea TUI
 ├─ internal/
 │  └─ gh/
-│     └─ gh.go            # GitHub CLI wrapper functions
-├─ package.json           # npm package configuration
+│     └─ gh.go            # GitHub CLI wrappers
+├─ package.json           # npm config
 └─ README.md
 ```
 
+## Contributing
 
-## 🤝 Contributing
+1. Fork the repo
+2. Create a feature branch (`git checkout -b feature/something-cool`)
+3. Commit your changes (`git commit -m 'Add something cool'`)
+4. Push it (`git push origin feature/something-cool`)
+5. Open a PR
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## License
 
-## 📄 License
+MIT License—check the LICENSE file for details.
 
-MIT License - see LICENSE file for details
 
-## 🙋‍♂️ Support
+## Support
 
 If you encounter any issues or have questions:
 - Open an issue on GitHub
