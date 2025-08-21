@@ -380,37 +380,51 @@ func stringsRepeat(s string, count int) string {
 }
 
 func main() {
-	if len(os.Args) > 1 && os.Args[1] == "list" {
-		fs := flag.NewFlagSet("list", flag.ExitOnError)
-		var org string
-		fs.StringVar(&org, "org", "", "GitHub organization")
-		_ = fs.Parse(os.Args[2:])
-		if org == "" {
-			fmt.Println("Usage: shippr list --org <org>")
-			os.Exit(1)
-		}
-		if err := runList(org); err != nil {
-			fmt.Fprintf(os.Stderr, "error: %v\n", err)
-			os.Exit(1)
-		}
-		return
-	}
-	var org, repo string
-	var noAlt bool
-	flag.StringVar(&org, "org", "", "GitHub organization or user")
-	flag.StringVar(&repo, "repo", "", "Repository name")
-	flag.BoolVar(&noAlt, "no-alt", false, "Disable alternate screen (render in normal screen)")
-	flag.Parse()
+    if len(os.Args) > 1 && os.Args[1] == "list" {
+        fs := flag.NewFlagSet("list", flag.ExitOnError)
+        var org string
+        fs.StringVar(&org, "org", "", "GitHub organization")
+        fs.Usage = func() {
+            // Show logo + usage for list subcommand
+            fmt.Print(logoANSI + "\n")
+            fmt.Fprintln(os.Stderr, "Usage: shippr list --org <org>")
+            fmt.Fprintln(os.Stderr)
+            fs.PrintDefaults()
+        }
+        _ = fs.Parse(os.Args[2:])
+        if org == "" {
+            fs.Usage()
+            os.Exit(1)
+        }
+        if err := runList(org); err != nil {
+            fmt.Fprintf(os.Stderr, "error: %v\n", err)
+            os.Exit(1)
+        }
+        return
+    }
+    var org, repo string
+    var noAlt bool
+    // Global usage with logo
+    flag.Usage = func() {
+        fmt.Print(logoANSI + "\n")
+        fmt.Fprintln(os.Stderr, "Usage: shippr list --org <org> | shippr --org <org> --repo <repo> | shippr <org/repo>")
+        fmt.Fprintln(os.Stderr)
+        flag.PrintDefaults()
+    }
+    flag.StringVar(&org, "org", "", "GitHub organization or user")
+    flag.StringVar(&repo, "repo", "", "Repository name")
+    flag.BoolVar(&noAlt, "no-alt", false, "Disable alternate screen (render in normal screen)")
+    flag.Parse()
 
 	repoSlug := ""
 	if org != "" && repo != "" {
 		repoSlug = gh.Slug(org, repo)
 	} else if flag.NArg() == 1 {
 		repoSlug = flag.Arg(0)
-	} else {
-		fmt.Println("Usage: shippr list --org <org> | shippr --org <org> --repo <repo> | shippr <org/repo>")
-		os.Exit(1)
-	}
+	    } else {
+        flag.Usage()
+        os.Exit(1)
+    }
 
 	if len(os.Getenv("DEBUG")) > 0 {
 		if f, err := tea.LogToFile("debug.log", "debug"); err == nil {
