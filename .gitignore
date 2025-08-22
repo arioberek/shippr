@@ -24,3 +24,6 @@ shippr-*.tgz
 .DS_Store
 .idea/
 .vscode/
+
+#Binary
+shippr
