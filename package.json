@@ -1,6 +1,6 @@
 {
   "name": "@arielton/shippr",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "GitHub PR shipper TUI/CLI (Go) with npm installer shim",
   "private": false,
   "bin": {
