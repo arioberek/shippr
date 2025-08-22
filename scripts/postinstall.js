@@ -21,7 +21,7 @@ const isWindows = process.platform === 'win32';
 const outName = isWindows ? 'shippr.exe' : 'shippr';
 const outPath = join(distDir, outName);
 
-const build = spawnSync('go', ['build', '-o', outPath, './cmd/git-shippr'], {
+const build = spawnSync('go', ['build', '-o', outPath, './cmd/shippr'], {
   cwd: projectRoot,
   stdio: 'inherit',
 });
